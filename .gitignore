@@ -1,0 +1,17 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+*.lnk
+launch_mermaid_visualizer.ps1
+taskbar_check.png
+data/raw/*
+data/postgres/*.csv
+data/neo4j/*.csv
+data/workloads/*.json
+data/workloads/*.jsonl
+results/raw/*
+results/summary/*
+results/figures/*
+!.gitkeep
