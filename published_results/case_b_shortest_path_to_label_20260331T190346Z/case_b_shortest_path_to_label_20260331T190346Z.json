@@ -1,0 +1,28 @@
+[
+  {
+    "suite": "graph_native_lab",
+    "db": "neo4j",
+    "case": "case_b_shortest_path_to_label",
+    "count": 5,
+    "mean_seconds": 0.008342500030994415,
+    "median_seconds": 0.0073830001056194305,
+    "p50_seconds": 0.0073830001056194305,
+    "p95_seconds": 0.010251720063388347,
+    "min_seconds": 0.006957199890166521,
+    "max_seconds": 0.01034480007365346,
+    "ops_per_second": 119.8681445951162
+  },
+  {
+    "suite": "graph_native_lab",
+    "db": "postgres",
+    "case": "case_b_shortest_path_to_label",
+    "count": 5,
+    "mean_seconds": 4.159289080044255,
+    "median_seconds": 6.172745899995789,
+    "p50_seconds": 6.172745899995789,
+    "p95_seconds": 7.500656040152535,
+    "min_seconds": 0.0016512000001966953,
+    "max_seconds": 7.627870200201869,
+    "ops_per_second": 0.2404257027475859
+  }
+]
