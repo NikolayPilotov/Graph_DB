@@ -6,6 +6,10 @@ __pycache__/
 *.lnk
 launch_mermaid_visualizer.ps1
 taskbar_check.png
+_system_storage/
+runtime/postgres-data/
+runtime/neo4j-data/
+runtime/neo4j-logs/
 data/raw/*
 data/postgres/*.csv
 data/neo4j/*.csv
@@ -14,4 +18,5 @@ data/workloads/*.jsonl
 results/raw/*
 results/summary/*
 results/figures/*
+results/bundles/*
 !.gitkeep

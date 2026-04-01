@@ -1,0 +1,54 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: avalanche-benchmark-postgres-light
+    restart: "no"
+    environment:
+      POSTGRES_DB: avalanche_benchmark
+      POSTGRES_USER: benchmark
+      POSTGRES_PASSWORD: benchmark
+    command:
+      - postgres
+      - -c
+      - shared_buffers=128MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - maintenance_work_mem=64MB
+      - -c
+      - max_wal_size=512MB
+    ports:
+      - "55432:5432"
+    volumes:
+      - ./runtime/postgres-data:/var/lib/postgresql/data
+      - ./data/postgres:/bench/postgres:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U benchmark -d avalanche_benchmark"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  neo4j:
+    image: neo4j:5.26
+    container_name: avalanche-benchmark-neo4j-light
+    restart: "no"
+    environment:
+      NEO4J_AUTH: neo4j/benchmark-password
+      NEO4J_server_memory_heap_initial__size: 512M
+      NEO4J_server_memory_heap_max__size: 512M
+      NEO4J_server_memory_pagecache_size: 256M
+      NEO4J_server_directories_import: /import
+      NEO4J_apoc_export_file_enabled: "true"
+      NEO4J_apoc_import_file_enabled: "true"
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./runtime/neo4j-data:/data
+      - ./runtime/neo4j-logs:/logs
+      - ./data/neo4j:/import:ro
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p benchmark-password 'RETURN 1;' || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 15
