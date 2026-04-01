@@ -140,6 +140,12 @@ Benchmark outputs:
 - `results/figures/*.svg`
 - `results/figures/*.html`
 
+Published snapshot artifacts:
+
+- `published_results/case_b_shortest_path_to_label_20260331T190346Z/`
+
+The repository also includes a separate graph-native Case B lab in `src/graph_native_lab` plus one published low-footprint result snapshot for that case.
+
 ## Timing model
 
 All benchmark timings are recorded in seconds using `time.perf_counter()`.
